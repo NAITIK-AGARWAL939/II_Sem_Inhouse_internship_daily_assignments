@@ -1,10 +1,10 @@
 <?php
 require_once "config.php";
 
-// Only process POST requests
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Collect and sanitize input
+    
     $fullname = trim($_POST['fullname'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $username = trim($_POST['username'] ?? '');
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
-    // Server-side validation (never trust the client alone)
+    
     if ($fullname === '') {
         $errors[] = "Full name is required.";
     }
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (empty($errors)) {
         try {
-            // Check if username or email already exists
+            
             $checkStmt = $conn->prepare("SELECT id FROM users WHERE username = :username OR email = :email");
             $checkStmt->execute([
                 ':username' => $username,
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($checkStmt->rowCount() > 0) {
                 echo "Username or email already exists.";
             } else {
-                // Hash the password before storing it
+                
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                 $stmt = $conn->prepare("INSERT INTO users (fullname, email, username, password) 
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo "Database error: " . $e->getMessage();
         }
     } else {
-        // Print all validation errors
+        
         foreach ($errors as $error) {
             echo $error . "<br>";
         }
