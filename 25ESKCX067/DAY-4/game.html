@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>APPLE BANANA GAME</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, rgb(255, 89, 205), #680c3f);
+      color: #222;
+    }
+    h1 {
+      color: #4ff01e;
+      text-shadow: 2px 2px #fff;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .image-box {
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .image-box img {
+      width: 250px;
+      border: 5px solid #333;
+      border-radius: 15px;
+      box-shadow: 4px 4px 15px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+    .image-box:hover {
+      transform: scale(1.05);
+    }
+    .count {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #timer {
+      margin-top: 40px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #003049;
+    }
+    #game-over {
+      margin-top: 20px;
+      font-size: 22px;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍎🍌 APPLE BANANA GAME 🍌🍎</h1>
+  <big>Click the given pics below before time runs out!</big><br><br>
+
+  <div class="container">
+    <div class="image-box">
+      <img src="apple.jpg" alt="Apple" id="img1">
+      <div class="count">Clicks: <span id="count1">0</span></div>
+    </div>
+    <div class="image-box">
+      <img src="banana.jpg" alt="Banana" id="img2">
+      <div class="count">Clicks: <span id="count2">0</span></div>
+    </div>
+  </div>
+
+  
+  <div id="timer">⏳ Time Left: 30s</div>
+  <div id="game-over"></div>
+
+  
+  <script src="js.js"></script>
+</body>
+</html>
